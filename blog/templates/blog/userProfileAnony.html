@@ -1,0 +1,51 @@
+
+{% extends 'blog/base.html' %}
+
+{% block body %}
+<!--
+<ul>
+    {% for post in posts %}
+    <li>
+        {{post.author}} -- {{post.date}} <hr>
+        {{post.title}} <br>
+        {{post.description}}
+        <br><br><br>
+    </li>
+    {% endfor %}
+</ul>
+
+-->
+
+
+        <div class="container my-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h4>Blog--{{username}}</h4>
+
+                    <br> <a href="{% url 'follower' username %}">Followers</a>: <b> {{follower_count}}</b>
+                    <br> <a href="{% url 'following' username %}">Following</a>: <b> {{following_count}}</b>
+
+
+
+                </li>
+
+                {% for post in posts %}
+
+                        <li class="list-group-item list-group-item-success mt-2"><h5>{{ post.title }}</h5><small>Created: {{post.author}} -- {{post.date}}</small>
+                                {{post.description}}
+                        </li>
+
+                        <span>
+                            <button class="btn btn-primary btn-sm">Like <B>{{post.like.count}}</B></button>
+
+
+
+                        </span>
+
+
+
+                {% endfor %}
+            </ul>
+        </div>
+
+{% endblock body %}

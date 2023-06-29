@@ -1,0 +1,99 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            {% comment %} margin-top: 20px; {% endcomment %}
+            background-color: lightgray;
+            font-weight: bolder;
+        }
+        .main{
+            padding: 15px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bolder;
+        }
+        .topbar{
+            background-color: teal;
+            overflow: hidden;
+        }
+        .topbar a{
+            float: right;
+            color: whitesmoke;
+            text-align: center;
+            padding: 20px 20px;
+            text-decoration: none;
+            font-size: 26px;
+        }
+        .sidebar{
+            background-color: #333;
+            color: white;
+            height: 100%;
+        }
+        .sidebar a{
+            padding-top: 10px;
+            background-color:teal;
+            margin-left: 10px;
+            display: block;
+            color: white;
+            padding-bottom: 10px;
+            font-size: 30px;
+            text-decoration: none;
+        }
+       .list-group{
+           padding-top: 10px;
+       }
+        .card{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .content{
+            background-color: whitesmoke;
+        }
+        
+    </style>
+</head>
+
+
+<body>
+    
+    <div class="container">
+        <div class="main">
+      <div class="row">
+          <div class="col-md-4 mt-1">
+              <div class="card text-center sidebar">
+                   <div class="card-body">
+                       
+                          <ul class="list-group" >
+                            
+                            
+                            {% for post in posts %}
+                           
+            
+                                    <li class="list-group-item list-group-item-success mt-2"><h5>{{ post.title }}</h5><small>Created: {{post.author}} -- {{post.date}}</small>
+                                            {{post.description}}
+                                    </li>
+            
+                                    
+            
+            
+                        
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+             </div>
+             
+             </div>
+        </div> 
+    </div>
+</body>
+
+</html>
+{% endblock body %}

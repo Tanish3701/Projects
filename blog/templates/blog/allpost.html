@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+<style>
+    body{
+        background-color: lightgray;
+    }
+   
+    
+</style>
+<ul>
+    {% for post in posts %}
+    <li style="font-style: Abril Fatface; color:black; font-weight:bolder;font-variant: small-caps;">
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'userProfile' post.author %}" style="background-color:#ff42a1;color:black">{{post.author}}</a>
+        {% else %}
+            <a href="{% url 'userProfileAnony' post.author %}" style="background-color:#00FF00;color:black">{{post.author}}</a>
+        {% endif %}
+
+    
+        -- {{post.date}} <hr>
+        <!--{{post.title}} <br>-->
+        
+
+        
+
+
+        <a href="{% url 'details' post.id %}" style="background-color:#00FF00;color:black; border radius:20%">{{post.title}}</a>
+        <br>
+        <a href="{% url 'like' post.id %}" class="btn btn-primary btn-sm">Like {{ post.like.count }}</a>
+        <a href="{% url 'cmnt' post.id %}" class="btn btn-primary btn-sm">Comment</a>
+        <br><br><br>
+    </li>
+
+
+
+
+
+    {% endfor %}
+</ul>
+{% endblock body %}

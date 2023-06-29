@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+
+
+{% block body %}
+   
+
+    <b>Comments</b><br>
+    {% for comment in comments %}
+        {{comment.viewer}}--{{comment.body}}
+        <br>
+    {% endfor %}
+
+
+
+    {% if request.user.is_authenticated %}
+    <!--Comment Form-->
+        <form method="Post" action="{% url 'comment' post.id %}">
+            {% csrf_token %}
+            <!-- FOR AND ID MUST BE SAME -->
+
+          <div class="form-group my-4">
+            <label for="comment">Comment</label>
+            <input type="text" class="form-control" id="comment" placeholder="Your comment here..." name="comment">
+          </div>
+
+
+          <button type="submit" class="btn btn-primary">Comment</button>
+        </form>
+    {% endif %}
+
+
+{% endblock body %}

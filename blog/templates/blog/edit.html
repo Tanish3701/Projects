@@ -1,0 +1,133 @@
+{% extends 'blog/base.html' %} {% block body %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Calibri, Helvetica, sans-serif;
+        background-color: pink;
+      }
+      .contain {
+        padding: 50px;
+        background-color: lightblue;
+        margin-left:12vw;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        background-color: orange;
+        outline: none;
+      }
+      div {
+        padding: 10px 0;
+      }
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+      .registerbtn {
+        background-color: #4caf50;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+      .registerbtn:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="contain">
+        <center><h1>EDIT FORM</h1></center>
+        <hr />
+        <label> Username </label>
+        <input
+          type="text"
+          name="username"
+          placeholder="username"
+          size="15"
+          required
+        />
+
+        <div>
+          <label> Branch : </label>
+          <input
+            type="text"
+            name="branch"
+            placeholder="your branch here"
+            size="15"
+            required
+          />
+        </div>
+        <div>
+          <label> Status : </label><br />
+          <input
+            type="text"
+            name="status"
+            placeholder="are you a teacher or a student"
+          />
+        </div>
+        <div class="form-group my-4">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="name@example.com"
+            name="email"
+          />
+        </div>
+        <div class="form-group my-4">
+          <label for="email">Github id</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="name@example.com"
+            name="email"
+          />
+        </div>
+        <div class="form-group my-4">
+          <label for="email">Instagram id</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="name@example.com"
+            name="email"
+          />
+        </div>
+        <div class="form-group my-4">
+          <label for="email">Linkedin id</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="name@example.com"
+            name="email"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">FINISH</button>
+
+      </div>
+    </form>
+  </body>
+</html>
+
+{% endblock body %}
