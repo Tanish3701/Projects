@@ -1,0 +1,125 @@
+{% extends 'blog/base.html'%}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+body{
+  font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+ 
+  
+  
+}
+.container {
+   
+    padding: 50px 50px 50px 50 px;
+  
+}
+div { 
+            padding: 10px 0;
+         }
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: lightgray;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #FFEFD5;
+  outline: none;
+}
+button{
+padding-top: 10px;
+    background-color: teal;
+    margin-left: 10px;
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+ 
+<div class="container">
+    <center>  <h1 style="font-weight: bolder;">SEARCH USER</h1> </center>
+    <hr>
+<form>
+  <div class="control">
+    <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+  </div>
+  <img src="https://media.giphy.com/media/23k49uADFGRLGQv9zb/giphy.gif" alt="" height="200" width="200">
+  <div class="control">
+  	<button type="submit" class="button is-success">Search</button>
+  </div>
+</form>
+<div class="container my-4">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h4>Result</h4>
+
+
+
+        </li>
+
+        {% for user in users %}
+            {% if request.user.is_authenticated %}
+                <li class="list-group-item list-group-item-success mt-2"><h5><a href="{% url 'userProfile' user %}">{{ user }}</a></h5>
+                  
+                </li>
+            {% else %}
+                <li class="list-group-item list-group-item-success mt-2"><h5><a href="{% url 'userProfileAnony' user %}">{{ user }}</a></h5>
+                 
+                </li>
+
+            {% endif %}
+
+
+        {% endfor %}
+
+
+        {% if users.has_previous %}
+            <a href="?q={{quser}}&page=1">First</a>
+            <a href="?q={{quser}}&page={{users.previous_page_number}}">Prev</a>
+        {% endif %}
+
+        {% if users.has_next %}
+            <a href="?q={{quser}}&page={{users.next_page_number}}">Next</a>
+            <a href="?q={{quser}}&page={{users.paginator.num_pages}}">Last</a>
+        {% endif %}
+
+
+
+
+    </ul>
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

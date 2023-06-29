@@ -1,0 +1,12 @@
+{% extends 'blog/base.html'%}
+{% block body %}
+<h1>Recipient's List</h1>
+<a href="{% url 'searchUser' %}">Search User</a>
+<br>
+<hr>
+{% for msg in message %}
+    <a href="{% url 'chathome' msg.user.username %}">{{msg.user.username}}</a>
+    <br>
+
+{% endfor %}
+{% endblock %}

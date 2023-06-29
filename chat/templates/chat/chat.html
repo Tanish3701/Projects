@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+
+
+{% block body %}
+
+
+
+
+
+
+    {% if request.user.is_authenticated %}
+    <h1>{{request.user}}--> {{username}}</h1>
+
+
+    {% for direct in directs%}
+        {{direct.sender}}-> {{direct.body}}<br>
+    {% endfor %}
+
+
+    <!--Comment Form-->
+        <form method="Post" action="{% url 'Sendmsg' username %}">
+            {% csrf_token %}
+            <!-- FOR AND ID MUST BE SAME -->
+
+          <div class="form-group my-4">
+            <label for="msg">Type Message here</label>
+            <input type="text" class="form-control" id="msg" placeholder="Your msg here..." name="msg">
+          </div>
+
+
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    {% endif %}
+{% endblock %}
